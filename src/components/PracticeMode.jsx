@@ -122,7 +122,6 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-            <span>🎯</span>
             Practice Mode - Exam Simulation
           </h2>
           <p className="text-sm text-gray-600 mt-1">
@@ -135,7 +134,6 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
       {textType === 'Instructions' && (
         <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
           <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
-            <span>📹</span>
             Video-Based Instructions Exercise
           </h3>
           <p className="text-sm text-blue-800 mb-3">
@@ -146,7 +144,6 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
             disabled={isGenerating}
             className="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white rounded-md font-semibold transition-colors flex items-center justify-center gap-2"
           >
-            <span>🎬</span>
             Get Random Video Exercise
           </button>
         </div>
@@ -184,10 +181,7 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
               Generating...
             </>
           ) : (
-            <>
-              <span>✨</span>
-              Generate Random Practice Topic
-            </>
+            'Generate Random Practice Topic'
           )}
         </button>
       )}
@@ -229,7 +223,7 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
               {/* Notes Section */}
               <div className="mt-4">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  📝 Your Notes (Take brief notes while watching)
+                  Your Notes (Take brief notes while watching)
                 </label>
                 <textarea
                   value={notes}
@@ -239,13 +233,13 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 />
                 <p className="text-xs text-gray-500 mt-2">
-                  💡 Tip: Keep notes brief - just key points. You'll write full instructions from these notes after closing the video.
+                  Tip: Keep notes brief - just key points. You'll write full instructions from these notes after closing the video.
                 </p>
               </div>
 
               <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                 <p className="text-sm font-semibold text-yellow-900 mb-2">
-                  📋 Instructions:
+                  Instructions:
                 </p>
                 <ol className="text-sm text-yellow-800 space-y-1 list-decimal list-inside">
                   <li>Watch the video carefully (you can watch it twice)</li>
@@ -264,7 +258,6 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
       {currentTopic && !showVideo && (
         <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
           <h3 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
-            <span>📌</span>
             Current Practice Topic
           </h3>
           <div className="space-y-2">
@@ -276,24 +269,6 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
                 {currentTopic.description}
               </p>
             </div>
-
-            {currentTopic.context && (
-              <div className="mt-2 p-3 bg-white rounded border border-green-200">
-                <p className="text-xs font-semibold text-gray-700 mb-1">Context:</p>
-                <p className="text-xs text-gray-600">{currentTopic.context}</p>
-              </div>
-            )}
-
-            {currentTopic.requirements && (
-              <div className="mt-2">
-                <p className="text-xs font-semibold text-green-800 mb-1">Requirements:</p>
-                <ul className="text-xs text-green-700 space-y-1 list-disc list-inside">
-                  {currentTopic.requirements.map((req, idx) => (
-                    <li key={idx}>{req}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
 
             {notes && currentTopic.videoTitle && (
               <div className="mt-2 p-3 bg-blue-50 rounded border border-blue-200">

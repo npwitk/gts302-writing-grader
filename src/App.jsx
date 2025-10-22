@@ -3,7 +3,6 @@ import Header from './components/Header';
 import ApiKeyInput from './components/ApiKeyInput';
 import TextTypeSelector from './components/TextTypeSelector';
 import TextInput from './components/TextInput';
-import RubricDisplay from './components/RubricDisplay';
 import ResultsDisplay from './components/ResultsDisplay';
 import PracticeMode from './components/PracticeMode';
 import { TEXT_TYPES } from './data/rubric';
@@ -112,9 +111,8 @@ function App() {
               />
             </div>
 
-            {/* Right Column: Rubric and Results */}
+            {/* Right Column: Results Only */}
             <div className="space-y-6">
-              <RubricDisplay textType={textType} />
               {results && <ResultsDisplay results={results} />}
             </div>
           </div>
