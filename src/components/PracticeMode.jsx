@@ -40,7 +40,7 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
           'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-          model: 'gpt-4',
+          model: 'gpt-4o-mini',
           messages: [
             {
               role: 'system',
@@ -57,7 +57,8 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to generate topic');
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || `API Error: ${response.status} ${response.statusText}`);
       }
 
       const data = await response.json();
@@ -66,7 +67,7 @@ export default function PracticeMode({ textType, apiKey, onGenerateTopic }) {
       onGenerateTopic(topic);
     } catch (error) {
       console.error('Error generating topic:', error);
-      alert(`Error: ${error.message}`);
+      alert(`Error generating topic: ${error.message}`);
     } finally {
       setIsGenerating(false);
     }
